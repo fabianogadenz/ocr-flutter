@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "595515700638",
+    "firebase_url": "https://tcc-fabiano-gadenz.firebaseio.com",
+    "project_id": "tcc-fabiano-gadenz",
+    "storage_bucket": "tcc-fabiano-gadenz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595515700638:android:3e7ec90524244bbd",
+        "android_client_info": {
+          "package_name": "br.com.gadenz.tcc_fabiano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595515700638-4gdq4jj6uonf9mf7923m7moabq85dgk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN1C1tGJ5GmjB1eRLaG1_p2mZbiIq3Pyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595515700638-4gdq4jj6uonf9mf7923m7moabq85dgk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
