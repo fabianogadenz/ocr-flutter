@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:tcc_fabiano/tratar_imagem.dart';
 import 'package:translator/translator.dart';
+
+import 'db/database.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: TratarImagem(),
     );
   }
 }
@@ -30,6 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool isImageLoaded = false;
   String texto;
+  List<String> blocos = [];
+  var imagem_tratada;
+
 
   Future pickImage() async {
     var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -87,18 +93,56 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             isImageLoaded
                 ? Center(
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      decoration:
-                          BoxDecoration(image: DecorationImage(image: FileImage(pickedImage), fit: BoxFit.cover)),
-                    ),
-                  )
+              child: Container(
+                height: 200,
+                width: 200,
+                decoration:
+                BoxDecoration(image: DecorationImage(image: FileImage(pickedImage), fit: BoxFit.cover)),
+              ),
+            )
                 : Container(),
-            RaisedButton(
+            isImageLoaded
+                ? RaisedButton(
               child: Text("ler texto"),
               onPressed: readText,
+            )
+                : Container(),
+            isImageLoaded ? Text("Texto encontrado:") : Container(),
+            RaisedButton(
+              child: Text("banco"),
+              onPressed: () async {
+//                await DBProvider.db.insert();
+                await DBProvider.db.buscaAvancada("Voltaren");
+              },
             ),
+            isImageLoaded ?
+            Center(
+              child: Container(
+                height: 200,
+                width: 200,
+                decoration:
+                BoxDecoration(image: DecorationImage(image: FileImage(imagem_tratada), fit: BoxFit.cover)),
+              ),
+            )
+                : Container(),
+            RaisedButton(
+              child: Text("tratar imagem"),
+              onPressed: () async {},
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: blocos.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: blocos[index].toString() == "VALERIMED" || blocos[index].toString().contains("Euthyrox")
+                          ? Text(
+                        blocos[index].toString(),
+                        style: TextStyle(backgroundColor: Colors.yellow[300]),
+                      )
+                          : Text(blocos[index].toString()),
+                    );
+                  }),
+            )
           ],
         ));
   }
