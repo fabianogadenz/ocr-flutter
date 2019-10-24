@@ -2,11 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image/image.dart' as teste;
-import 'package:path/path.dart';
-import 'package:photofilters/photofilters.dart';
-import 'package:image/image.dart' as imageLib;
 import 'package:image_picker/image_picker.dart';
+import 'package:tcc_fabiano/utils.dart';
 
 class TratarImagem extends StatefulWidget {
   @override
@@ -14,21 +11,22 @@ class TratarImagem extends StatefulWidget {
 }
 
 class _TratarImagemState extends State<TratarImagem> {
-  String fileName;
+  File imageFileOriginal;
   File imageFile;
+  File imageFileGrey;
+  File imageFileSobel;
+
+  Utils utils = Utils();
+
   Future getImage(context) async {
-    imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
-    fileName = basename(imageFile.path);
-    var image = imageLib.decodeImage(imageFile.readAsBytesSync());
-    image = imageLib.copyResize(image, width: 600);
-    imageLib.Image filtroImage = await teste.sobel(image, amount: 1.0);
+    imageFile = imageFileOriginal = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    var pixels = filtroImage.getBytes();
-    imageLib.Image out = imageLib.Image.fromBytes(filtroImage.width, filtroImage.height, pixels);
     setState(() {
-      imageFile = new File(imageFile.path)..writeAsBytes(imageLib.encodeNamedImage(out, imageFile.path));
-    });
+      utils.filterGray(imageFile).then((File imgSobel) {
+        imageFileOriginal = imgSobel;
+      });
 
+    });
   }
 
   @override
@@ -39,12 +37,23 @@ class _TratarImagemState extends State<TratarImagem> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: new Container(
-            child: imageFile == null
-                ? Center(
-              child: new Text('No image selected.'),
-            )
-                : Image.file(imageFile),
+          child: Column(
+            children: <Widget>[
+              new Container(
+                child: imageFileOriginal != null
+                    ? Center(
+                  child: Container(
+                    height: 400,
+                    width: 400,
+                    decoration:
+                    BoxDecoration(image: DecorationImage(image: FileImage(imageFileOriginal), fit: BoxFit.cover)),
+                  ),
+                )
+                    : Container(),
+              ),
+
+
+            ],
           ),
         ),
       ),

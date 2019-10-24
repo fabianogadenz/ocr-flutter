@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:tcc_fabiano/screens/home_screen.dart';
 import 'package:tcc_fabiano/tratar_imagem.dart';
 import 'package:translator/translator.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TratarImagem(),
+      //home: TratarImagem(),
+      home: HomeScreen(),
     );
   }
 }
@@ -34,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isImageLoaded = false;
   String texto;
   List<String> blocos = [];
-  var imagem_tratada;
+  File imagem_tratada;
 
 
   Future pickImage() async {
