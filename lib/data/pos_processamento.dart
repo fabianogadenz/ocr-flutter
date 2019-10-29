@@ -15,8 +15,10 @@ class PosProcessamento {
     List<Medicamento> listMedicamento = [];
     listMedicamento = await data.buscaMedicamentoIgual(dados_limpos, context);
     print("listmedicamento" + listMedicamento.length.toString());
-    if (listMedicamento.length > 1)
+    if (listMedicamento.length != 1) {
+      print("entrou");
       listMedicamento = await data.buscaMedicamentoEsq(dados_limpos, context);
+    }
     print("listmedicamento2" + listMedicamento.length.toString());
     return listMedicamento;
   }

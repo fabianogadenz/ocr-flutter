@@ -28,12 +28,17 @@ class Utils {
 
   static bool contemLixo(String dado) {
     List<String> lixo = [
-      "mg",
-      "ml",
+      " mg",
+      " ml",
       "comprimidos",
       "venda",
       "medica",
-      "medico"
+      "medico",
+      " oral",
+      " idade",
+      "adulto",
+      "empresa",
+      "tratamento"
     ];
     for (String l in lixo) {
       if (dado.contains(l)) return true;

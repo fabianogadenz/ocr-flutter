@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:tcc_fabiano/data/pos_processamento.dart';
 import 'package:tcc_fabiano/models/medicamento.dart';
-import 'package:translator/translator.dart';
+import 'package:tcc_fabiano/screens/mostra_medicamento.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,18 +16,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -40,12 +36,29 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isImageLoaded = false;
 
   Future pickImage() async {
-    var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
+    File tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
+    Medicamento medicamento = await identificaMedicamento(tempStore);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MostraMedicamento(imagem: tempStore, medicamento: medicamento)),
+    );
+  }
 
-    setState(() {
-      pickedImage = tempStore;
-      isImageLoaded = true;
-    });
+  Future<Medicamento> identificaMedicamento(File tempStore2) async {
+    FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(tempStore2);
+    TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
+    VisionText readText = await recognizeText.processImage(ourImage);
+    List<String> dados_sujos = [];
+    for (TextBlock block in readText.blocks) {
+      for (TextLine line in block.lines) {
+        dados_sujos.add(line.text.toString());
+      }
+    }
+    List<Medicamento> listMedicamento = [];
+    listMedicamento = await PosProcessamento.buscaMedicamentos(dados_sujos, context);
+
+    if (listMedicamento.length == 0) return Medicamento();
+    if (listMedicamento.length > 0) return listMedicamento[0];
   }
 
   Future readText() async {
@@ -63,37 +76,20 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     List<Medicamento> listMedicamento = [];
     listMedicamento = await PosProcessamento.buscaMedicamentos(dados_sujos, context);
-    PosProcessamento.buscaMedicamentos(dados_sujos, context).then((list){
-      setState(() {
-      if(list.length > 0)
-        medicamento = list[0].nome;
-        myText = readText.text;
-      });
+    setState(() {
+      if (listMedicamento.length == 0) medicamento = "Nenhum medicamento encontrado!";
+      if (listMedicamento.length > 0) medicamento = listMedicamento[0].nome;
+      myText = readText.text;
     });
-
   }
 
-  void translate(String readText) async {
-    GoogleTranslator translator = GoogleTranslator();
 
-    String input = readText;
-
-    translator.translate(input, to: 'pt').then((s) => print("Source: " +
-        input +
-        "\n"
-            "Translated: " +
-        s +
-        "\n"));
-
-    // var translation = await translator.translate(input, from: 'ru', to: 'en');
-    // print("translation: " + translation);
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("teste"),
       ),
       body: Column(
         children: <Widget>[
@@ -120,11 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text('Ler texto'),
             onPressed: readText,
           ),
-          Text("$medicamento", style: TextStyle(fontSize: 30),),
+          Text(
+            "$medicamento",
+            style: TextStyle(fontSize: 30),
+          ),
           Expanded(child: Text("$myText"))
         ],
       ),
-
     );
   }
 }
