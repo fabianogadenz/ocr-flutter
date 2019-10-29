@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "595515700638",
-    "firebase_url": "https://tcc-fabiano-gadenz.firebaseio.com",
-    "project_id": "tcc-fabiano-gadenz",
-    "storage_bucket": "tcc-fabiano-gadenz.appspot.com"
+    "project_number": "841729173345",
+    "firebase_url": "https://tcc-fabiano.firebaseio.com",
+    "project_id": "tcc-fabiano",
+    "storage_bucket": "tcc-fabiano.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:595515700638:android:3e7ec90524244bbd",
+        "mobilesdk_app_id": "1:841729173345:android:a6e15e3673825ccd150720",
         "android_client_info": {
-          "package_name": "br.com.gadenz.tcc_fabiano"
+          "package_name": "br.com.speedcode.tcc_fabiano"
         }
       },
       "oauth_client": [
         {
-          "client_id": "595515700638-4gdq4jj6uonf9mf7923m7moabq85dgk0.apps.googleusercontent.com",
+          "client_id": "841729173345-b054g4vr464lit3p0nmesojpg0huvn1g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAN1C1tGJ5GmjB1eRLaG1_p2mZbiIq3Pyk"
+          "current_key": "AIzaSyDim3glp_1LTCvuvcXEfSPMNf673mRTGtY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "595515700638-4gdq4jj6uonf9mf7923m7moabq85dgk0.apps.googleusercontent.com",
+              "client_id": "841729173345-b054g4vr464lit3p0nmesojpg0huvn1g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

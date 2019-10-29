@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
-import 'package:tcc_fabiano/screens/home_screen.dart';
-import 'package:tcc_fabiano/tratar_imagem.dart';
+import 'package:tcc_fabiano/data/pos_processamento.dart';
+import 'package:tcc_fabiano/models/medicamento.dart';
 import 'package:translator/translator.dart';
-
-import 'db/database.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,25 +18,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: TratarImagem(),
-      home: HomeScreen(),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   File pickedImage;
+  String myText = "";
+  String medicamento = "";
 
   bool isImageLoaded = false;
-  String texto;
-  List<String> blocos = [];
-  File imagem_tratada;
-
 
   Future pickImage() async {
     var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -49,20 +49,28 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future readText() async {
-    FirebaseVisionImage myImage = FirebaseVisionImage.fromFile(pickedImage);
+    FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
     TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
-    VisionText readText = await recognizeText.processImage(myImage);
-
-//    for(TextBlock block in readText.blocks){
-//      print("${block.text}");
-//      for(TextLine lines in block.lines){
-//        for(TextElement word in lines.elements){
-//          result = texto = " " + word.text;
+    VisionText readText = await recognizeText.processImage(ourImage);
+    List<String> dados_sujos = [];
+    for (TextBlock block in readText.blocks) {
+      for (TextLine line in block.lines) {
+        dados_sujos.add(line.text.toString());
+//        for (TextElement word in line.elements) {
+//          print(line.text);
 //        }
-//      }
-//    }
+      }
+    }
+    List<Medicamento> listMedicamento = [];
+    listMedicamento = await PosProcessamento.buscaMedicamentos(dados_sujos, context);
+    PosProcessamento.buscaMedicamentos(dados_sujos, context).then((list){
+      setState(() {
+      if(list.length > 0)
+        medicamento = list[0].nome;
+        myText = readText.text;
+      });
+    });
 
-    translate(readText.text);
   }
 
   void translate(String readText) async {
@@ -84,68 +92,39 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("OCR de Medicamento"),
-        ),
-        body: Column(
-          children: <Widget>[
-            RaisedButton(
-              child: Text("pick"),
-              onPressed: pickImage,
-            ),
-            isImageLoaded
-                ? Center(
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration:
-                BoxDecoration(image: DecorationImage(image: FileImage(pickedImage), fit: BoxFit.cover)),
-              ),
-            )
-                : Container(),
-            isImageLoaded
-                ? RaisedButton(
-              child: Text("ler texto"),
-              onPressed: readText,
-            )
-                : Container(),
-            isImageLoaded ? Text("Texto encontrado:") : Container(),
-            RaisedButton(
-              child: Text("banco"),
-              onPressed: () async {
-//                await DBProvider.db.insert();
-                await DBProvider.db.buscaAvancada("Voltaren");
-              },
-            ),
-            isImageLoaded ?
-            Center(
-              child: Container(
-                height: 200,
-                width: 200,
-                decoration:
-                BoxDecoration(image: DecorationImage(image: FileImage(imagem_tratada), fit: BoxFit.cover)),
-              ),
-            )
-                : Container(),
-            RaisedButton(
-              child: Text("tratar imagem"),
-              onPressed: () async {},
-            ),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: blocos.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: blocos[index].toString() == "VALERIMED" || blocos[index].toString().contains("Euthyrox")
-                          ? Text(
-                        blocos[index].toString(),
-                        style: TextStyle(backgroundColor: Colors.yellow[300]),
-                      )
-                          : Text(blocos[index].toString()),
-                    );
-                  }),
-            )
-          ],
-        ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Column(
+        children: <Widget>[
+          isImageLoaded
+              ? Center(
+                  child: Container(
+                    height: 200.0,
+                    width: 200.0,
+                    decoration: BoxDecoration(image: DecorationImage(image: FileImage(pickedImage), fit: BoxFit.cover)),
+                  ),
+                )
+              : Container(),
+          SizedBox(
+            height: 10.0,
+          ),
+          RaisedButton(
+            child: Text('Escolher imagem'),
+            onPressed: pickImage,
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          RaisedButton(
+            child: Text('Ler texto'),
+            onPressed: readText,
+          ),
+          Text("$medicamento", style: TextStyle(fontSize: 30),),
+          Expanded(child: Text("$myText"))
+        ],
+      ),
+
+    );
   }
 }
