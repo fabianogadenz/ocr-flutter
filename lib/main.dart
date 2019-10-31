@@ -6,7 +6,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:tcc_fabiano/data/pos_processamento.dart';
 import 'package:tcc_fabiano/models/medicamento.dart';
+import 'package:tcc_fabiano/screens/home.dart';
 import 'package:tcc_fabiano/screens/mostra_medicamento.dart';
+import 'package:tcc_fabiano/screens/nao_encontrado.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: MyHomePage(),
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -38,10 +41,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Future pickImage() async {
     File tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
     Medicamento medicamento = await identificaMedicamento(tempStore);
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MostraMedicamento(imagem: tempStore, medicamento: medicamento)),
-    );
+    if (medicamento.nome != null)
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MostraMedicamento(imagem: tempStore, medicamento: medicamento)),
+      );
+    else
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => NaoEncontradoScreen()),
+      );
   }
 
   Future<Medicamento> identificaMedicamento(File tempStore2) async {
@@ -51,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     List<String> dados_sujos = [];
     for (TextBlock block in readText.blocks) {
       for (TextLine line in block.lines) {
+        print(line.text);
         dados_sujos.add(line.text.toString());
       }
     }
@@ -83,13 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("teste"),
+        title: Text("Busca Medicamento"),
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[

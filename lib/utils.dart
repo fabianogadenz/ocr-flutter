@@ -7,11 +7,11 @@ class Utils {
     for (String r in resultados) resultados_limpos.add(removeDiacritics(r));
     return resultados_limpos;
   }
-  static List<String> formata_para_minuscula(List<String> resultados){
+
+  static List<String> formata_para_minuscula(List<String> resultados) {
     List<String> resultados_minusculos = [];
 
-    for (String r in resultados)
-      resultados_minusculos.add(r.toLowerCase());
+    for (String r in resultados) resultados_minusculos.add(r.toLowerCase());
     return resultados_minusculos;
   }
 
@@ -19,8 +19,7 @@ class Utils {
     List<String> resultados_limpos = [];
 
     for (String r in resultados) {
-      if(!contemLixo(r))
-        resultados_limpos.add(r);
+      if (!contemLixo(r)) resultados_limpos.add(r);
     }
     print("removePalavrasPadrao " + resultados_limpos.length.toString());
     return resultados_limpos;
@@ -38,6 +37,9 @@ class Utils {
       " idade",
       "adulto",
       "empresa",
+      "tratamento",
+      "compromisso"
+          " saude",
       "tratamento"
     ];
     for (String l in lixo) {
@@ -52,6 +54,7 @@ class Utils {
     }
     return null;
   }
+
   Medicamento igualMedicamento(String dado, List<Medicamento> listMedicamentos) {
     for (Medicamento medicamento in listMedicamentos) {
       if (dado == removeDiacritics(medicamento.nome.toLowerCase())) return medicamento;
