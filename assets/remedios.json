@@ -5,7 +5,7 @@
       "nome": "Tolrest",
       "principios_ativos": "Principios ativos do Tolrest",
       "contra_indicacoes": "contra_indicacoes do Tolrest",
-      "tipo_medicamento": "tipo_medicamento do Tolrest",
+      "tipo_medicamento": "Comprimidos de 50mg e 100mg",
       "data": "data"
     },
     {
@@ -22,7 +22,7 @@
       "principios_ativos": "Principios ativos do Valerimed",
       "contra_indicacoes": "contra_indicacoes do Valerimed",
       "tipo_medicamento": "tipo_medicamento do Valerimed",
-      "data": "data 3"
+      "data": "25/03/2019"
     },
     {
       "id": 4,
@@ -35,10 +35,10 @@
     {
       "id": 5,
       "nome": "Voltaren",
-      "principios_ativos": "Principios ativos Voltaren",
-      "contra_indicacoes": "contra_indicacoes Voltaren",
-      "tipo_medicamento": "tipo_medicamento Voltaren",
-      "data": "data 2"
+      "principios_ativos": "Voltaren é indicado para o tratamento da dor, da inflamação e da febre, dores associadas a diferentes tipos de reumatismo como dor reumática das articulações, síndrome do ombro congelado ou crises de gota, dor nas costas, entorses, cotovelo de tenista, distensões ou outras lesões, infecções do ouvido, nariz e garganta e no tratamento de inflamações dolorosas em ginecologia, como períodos menstruais, em adultos.",
+      "contra_indicacoes": "Hipersensibilidade conhecida à substância ativa ou a qualquer outro componente da formulação; Úlcera gástrica ou intestinal ativa, sangramento ou perfuração (vide “Advertências e precauções” e “Reações adversas”); No último trimestre de gravidez (vide “Gravidez e lactação”); Insuficiência hepática;",
+      "tipo_medicamento": "Comprimidos ou supositórios",
+      "data": "20/10/2019"
     },
     {
       "id": 6,

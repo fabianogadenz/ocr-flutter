@@ -24,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Medicamento medicamento = await identificaMedicamento(tempStore);
     if (medicamento.nome != null)
       Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MostraMedicamento(imagem: tempStore, medicamento: medicamento)),
+        context,
+        MaterialPageRoute(builder: (context) => MostraMedicamento(imagem: tempStore, medicamento: medicamento)),
       );
     else
       Navigator.push(context, MaterialPageRoute(builder: (context) => NaoEncontradoScreen()));
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
             child: Container(
               height: 50,
               child: OutlineButton(
@@ -104,6 +105,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           child: Text(
                             "Carregar Foto",
+                            style: TextStyle(fontSize: 30, color: Colors.teal[800]),
+                            textAlign: TextAlign.center,
+                          ))
+                    ],
+                  ),
+                  highlightedBorderColor: Colors.cyan,
+                  color: Colors.teal,
+                  borderSide: new BorderSide(color: Colors.teal),
+                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0))),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              height: 50,
+              child: OutlineButton(
+                  onPressed: () {
+                  },
+                  child: Stack(
+                    children: <Widget>[
+                      Align(
+                          alignment: Alignment.centerLeft, child: Icon(Icons.search, size: 30, color: Colors.teal[800])),
+                      Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Pesquisar",
                             style: TextStyle(fontSize: 30, color: Colors.teal[800]),
                             textAlign: TextAlign.center,
                           ))

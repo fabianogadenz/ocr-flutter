@@ -1,13 +1,17 @@
 import 'dart:io';
 
+import 'package:floating_action_row/floating_action_row.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:tcc_fabiano/widgets/card_expanded_info.dart';
 
 import '../models/medicamento.dart';
 
 class MostraMedicamento extends StatefulWidget {
   final File imagem;
   final Medicamento medicamento;
+
   MostraMedicamento({@required this.imagem, @required this.medicamento});
 
   @override
@@ -15,11 +19,38 @@ class MostraMedicamento extends StatefulWidget {
 }
 
 class _MostraMedicamentoState extends State<MostraMedicamento> {
+  double fonte_media = 25;
+  double fonte_grande = 35;
+  double fonte_pequena = 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionRow(
+          color: Colors.teal,
+          children: <Widget>[
+            FloatingActionRowButton(
+                icon: Icon(Icons.add),
+                onTap: () {
+                  setState(() {
+                    fonte_grande = fonte_grande + 3;
+                  });
+                }),
+            FloatingActionRowDivider(),
+            FloatingActionRowButton(
+                icon: Icon(Icons.minimize),
+                onTap: () {
+                  setState(() {
+                    fonte_grande = fonte_grande - 3;
+                  });
+                }),
+          ],
+        ),
         appBar: AppBar(
-          title: Text("Meu Medicamento",style: TextStyle(color: Colors.white),),
+          title: Text(
+            "Meu Medicamento",
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
         ),
         body: Padding(
@@ -37,25 +68,36 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                   ),
                 ),
               ),
-//              Center(
-//                child: Container(
-//                  height: 200.0,
-//                  width: 200.0,
-//                  decoration: BoxDecoration(image: DecorationImage(image: FileImage(widget.imagem), fit: BoxFit.cover)),
-//                ),
-//              ),
-              SizedBox(height: 5,),
-              Center(child: Text(widget.medicamento.nome, style: TextStyle(fontSize: 25),)),
-              SizedBox(height: 5,),
-              Text("Tipo de medicamento: Cápsulas"),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
+              Center(
+                  child: Text(
+                widget.medicamento.nome,
+                style: TextStyle(fontSize: fonte_grande),
+              )),
+              CardExpandedInfo.CardExpanded(
+                  nomeCampo: "Tipo de medicamento:",
+                  dadoCampo: widget.medicamento.tipoMedicamento,
+                  abertoInicial: true),
+              SizedBox(
+                height: 5,
+              ),
+              CardExpandedInfo.CardExpanded(
+                  nomeCampo: "Princípios ativos:", dadoCampo: widget.medicamento.principiosAtivos, abertoInicial: true),
+              SizedBox(
+                height: 5,
+              ),
+              CardExpandedInfo.CardExpanded(
+                  nomeCampo: "Contra-Indicações:", dadoCampo: widget.medicamento.contraIndicacoes, abertoInicial: true),
+              SizedBox(
+                height: 5,
+              ),
               Text(
-                  "Princípios ativos: ${widget.medicamento.principiosAtivos}"),
-              SizedBox(height: 5,),
-              Text(
-                  "Contra-Indicações: ${widget.medicamento.contraIndicacoes}"),
-              SizedBox(height: 5,),
-              Text("Data da última atualização: ${widget.medicamento.data}"),
+                "Última atualização: \n${widget.medicamento.data}",
+                textAlign: TextAlign.right,
+                style: TextStyle(color: Colors.grey, fontSize: 10),
+              ),
             ],
           ),
         ));
