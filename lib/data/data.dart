@@ -45,7 +45,6 @@ class Data {
     return medicamentos_encontrados;
   }
 
-
   Future<List<Medicamento>> buscaMedicamentoDir(List<String> resultados, context) async {
     List<Medicamento> medicamentos = await buscaMedicamentos(context);
     List<Medicamento> medicamentos_encontrados = [];

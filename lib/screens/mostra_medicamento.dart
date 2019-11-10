@@ -12,7 +12,7 @@ class MostraMedicamento extends StatefulWidget {
   final File imagem;
   final Medicamento medicamento;
 
-  MostraMedicamento({@required this.imagem, @required this.medicamento});
+  MostraMedicamento({this.imagem, @required this.medicamento});
 
   @override
   _MostraMedicamentoState createState() => _MostraMedicamentoState();
@@ -61,9 +61,13 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                 child: Container(
                   width: 150,
                   height: 150,
-                  child: CircleAvatar(
+                  child: widget.imagem != null? CircleAvatar(
                     radius: 30.0,
                     backgroundImage: FileImage(widget.imagem),
+                    backgroundColor: Colors.transparent,
+                  ): CircleAvatar(
+                    radius: 30.0,
+                    child: Icon(Icons.info_outline, size: 150,),
                     backgroundColor: Colors.transparent,
                   ),
                 ),

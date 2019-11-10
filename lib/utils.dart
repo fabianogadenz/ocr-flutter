@@ -61,4 +61,18 @@ class Utils {
     }
     return null;
   }
+
+  static List<Medicamento> filtraClientes(filtro, listMedicamentos) {
+    List<Medicamento> filtrados = [];
+    for (Medicamento l in listMedicamentos) {
+      if (l.nome
+          .toLowerCase()
+          .trim()
+          .replaceAll(" ", "")
+          .contains(filtro.toString().toLowerCase().trim().replaceAll(" ", ""))) {
+        filtrados.add(l);
+      } else if (l.tipoMedicamento.contains(filtro.toString())) filtrados.add(l);
+    }
+    return filtrados;
+  }
 }
