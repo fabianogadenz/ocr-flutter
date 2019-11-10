@@ -11,7 +11,7 @@
     {
       "id": 2,
       "nome": "Dorilen",
-      "principios_ativos": "Principios ativos do Dorilen",
+      "principios_ativos": "Dorilen é um medicamento que tem na sua composição dipirona, a adifenina e a prometazina, que apresentam uma ação analgésica e que reduz os espasmos e a febre.",
       "contra_indicacoes": "contra_indicacoes do Dorilen",
       "tipo_medicamento": "tipo_medicamento do Dorilen",
       "data": "data 2"
@@ -46,6 +46,14 @@
       "principios_ativos": "Principios ativos do Elô",
       "contra_indicacoes": "contra_indicacoes do Elô",
       "tipo_medicamento": "tipo_medicamento  do Elô",
+      "data": "data 2"
+    },
+    {
+      "id": 7,
+      "nome": "Cimegripe",
+      "principios_ativos": "Cimegripe é indicado no tratamento dos sintomas de gripes e resfriados. Cimegripe é destinado ao alívio da congestão nasal, coriza, febre, dor de cabeça e dores musculares presentes nos estados gripais.",
+      "contra_indicacoes": "contra_indicacoes do Cimegripe",
+      "tipo_medicamento": "tipo_medicamento  do Cimegripe",
       "data": "data 2"
     }
   ]

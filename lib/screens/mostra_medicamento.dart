@@ -30,18 +30,26 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
           color: Colors.teal,
           children: <Widget>[
             FloatingActionRowButton(
-                icon: Icon(Icons.add),
+                icon: Icon(
+                  MdiIcons.magnifyPlus,
+                  size: 40,
+                ),
                 onTap: () {
                   setState(() {
                     fonte_grande = fonte_grande + 3;
+                    fonte_pequena = fonte_pequena + 3;
                   });
                 }),
             FloatingActionRowDivider(),
             FloatingActionRowButton(
-                icon: Icon(Icons.minimize),
+                icon: Icon(
+                  MdiIcons.magnifyMinus,
+                  size: 40,
+                ),
                 onTap: () {
                   setState(() {
                     fonte_grande = fonte_grande - 3;
+                    fonte_pequena = fonte_pequena - 3;
                   });
                 }),
           ],
@@ -61,15 +69,20 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                 child: Container(
                   width: 150,
                   height: 150,
-                  child: widget.imagem != null? CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: FileImage(widget.imagem),
-                    backgroundColor: Colors.transparent,
-                  ): CircleAvatar(
-                    radius: 30.0,
-                    child: Icon(Icons.info_outline, size: 150,),
-                    backgroundColor: Colors.transparent,
-                  ),
+                  child: widget.imagem != null
+                      ? CircleAvatar(
+                          radius: 30.0,
+                          backgroundImage: FileImage(widget.imagem),
+                          backgroundColor: Colors.transparent,
+                        )
+                      : CircleAvatar(
+                          radius: 30.0,
+                          child: Icon(
+                            Icons.info_outline,
+                            size: 150,
+                          ),
+                          backgroundColor: Colors.transparent,
+                        ),
                 ),
               ),
               SizedBox(
@@ -81,19 +94,24 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                 style: TextStyle(fontSize: fonte_grande),
               )),
               CardExpandedInfo.CardExpanded(
+                  fonte_pequena: fonte_pequena,
+                  nomeCampo: "Princípios ativos:",
+                  dadoCampo: widget.medicamento.principiosAtivos,
+                  abertoInicial: false),
+              SizedBox(
+                height: 5,
+              ),
+              CardExpandedInfo.CardExpanded(
                   nomeCampo: "Tipo de medicamento:",
                   dadoCampo: widget.medicamento.tipoMedicamento,
-                  abertoInicial: true),
+                  abertoInicial: false),
               SizedBox(
                 height: 5,
               ),
               CardExpandedInfo.CardExpanded(
-                  nomeCampo: "Princípios ativos:", dadoCampo: widget.medicamento.principiosAtivos, abertoInicial: true),
-              SizedBox(
-                height: 5,
-              ),
-              CardExpandedInfo.CardExpanded(
-                  nomeCampo: "Contra-Indicações:", dadoCampo: widget.medicamento.contraIndicacoes, abertoInicial: true),
+                  nomeCampo: "Contra-Indicações:",
+                  dadoCampo: widget.medicamento.contraIndicacoes,
+                  abertoInicial: false),
               SizedBox(
                 height: 5,
               ),

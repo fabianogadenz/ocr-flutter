@@ -9,6 +9,7 @@ import 'package:tcc_fabiano/models/medicamento.dart';
 import 'package:tcc_fabiano/screens/busca_medicamento.dart';
 import 'package:tcc_fabiano/screens/mostra_medicamento.dart';
 import 'package:tcc_fabiano/screens/nao_encontrado.dart';
+import 'package:tcc_fabiano/widgets/loading_widget.dart';
 import 'package:tcc_fabiano/widgets/menu_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,14 +18,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _isLoading = false;
+
   Future pickImage(bool camera) async {
+    setState(() {
+      _isLoading = true;
+    });
     File tempStore;
     if (camera)
       tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
     else
       tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if(tempStore == null)
+      _isLoading = false;
 
     Medicamento medicamento = await identificaMedicamento(tempStore);
+    _isLoading = false;
     if (medicamento.nome != null)
       Navigator.push(
         context,
@@ -62,20 +71,35 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body: GridView.count(
-          // Cria um grid com duas colunas
-          crossAxisCount: 2,
-          children: [
-            MenuTile.menuTile(titulo: "Capturar Foto", icone: Icons.camera_alt, funcao: (){pickImage(true);}),
-            MenuTile.menuTile(titulo: "Carregar Foto", icone: MdiIcons.image, funcao: (){pickImage(false);}),
-            MenuTile.menuTile(titulo: "Pesquisar", icone: Icons.search, funcao: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BuscaMedicamento()),
-              );
-            }),
-            MenuTile.menuTile(titulo: "Favoritos", icone: Icons.star)
-          ]),
+      body: (_isLoading == true)
+          ? LoadingWidget.loadingWidget(context)
+          : GridView.count(
+              // Cria um grid com duas colunas
+              crossAxisCount: 2,
+              children: [
+                  MenuTile.menuTile(
+                      titulo: "Capturar Foto",
+                      icone: Icons.camera_alt,
+                      funcao: () {
+                        pickImage(true);
+                      }),
+                  MenuTile.menuTile(
+                      titulo: "Carregar Foto",
+                      icone: MdiIcons.image,
+                      funcao: () {
+                        pickImage(false);
+                      }),
+                  MenuTile.menuTile(
+                      titulo: "Pesquisar",
+                      icone: Icons.search,
+                      funcao: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BuscaMedicamento()),
+                        );
+                      }),
+                  MenuTile.menuTile(titulo: "Favoritos", icone: Icons.star)
+                ]),
 //      Column(
 //        children: <Widget>[
 //          Padding(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class CardExpandedInfo{
-  static Widget CardExpanded({String nomeCampo, String dadoCampo, bool abertoInicial = false, }){
+  static Widget CardExpanded({String nomeCampo, String dadoCampo, bool abertoInicial = false, double fonte_pequena}){
     return ExpansionTile(
       backgroundColor: Colors.grey[100],
       initiallyExpanded: abertoInicial,
@@ -13,7 +13,7 @@ class CardExpandedInfo{
       children: <Widget>[
         Text(
           dadoCampo,
-          style: TextStyle(fontSize: 15),
+          style: TextStyle(fontSize: fonte_pequena),
         ),
       ],
     );
