@@ -7,6 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:tcc_fabiano/data/pos_processamento.dart';
 import 'package:tcc_fabiano/models/medicamento.dart';
 import 'package:tcc_fabiano/screens/busca_medicamento.dart';
+import 'package:tcc_fabiano/screens/favoritos.dart';
 import 'package:tcc_fabiano/screens/mostra_medicamento.dart';
 import 'package:tcc_fabiano/screens/nao_encontrado.dart';
 import 'package:tcc_fabiano/widgets/loading_widget.dart';
@@ -98,97 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(builder: (context) => BuscaMedicamento()),
                         );
                       }),
-                  MenuTile.menuTile(titulo: "Favoritos", icone: Icons.star)
+                  MenuTile.menuTile(titulo: "Favoritos", icone: Icons.star, funcao: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Favoritos()),
+                    );
+                  }),
                 ]),
-//      Column(
-//        children: <Widget>[
-//          Padding(
-//            padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
-//            child: Container(
-//              height: 50,
-//              child: OutlineButton(
-//                  onPressed: () {
-//                    pickImage(true);
-//                  },
-//                  child: Stack(
-//                    children: <Widget>[
-//                      Align(
-//                          alignment: Alignment.centerLeft,
-//                          child: Icon(Icons.camera_alt, size: 30, color: Colors.teal[800])),
-//                      Align(
-//                          alignment: Alignment.center,
-//                          child: Text(
-//                            "Capturar Foto",
-//                            style: TextStyle(fontSize: 30, color: Colors.teal[800]),
-//                            textAlign: TextAlign.center,
-//                          ))
-//                    ],
-//                  ),
-//                  highlightedBorderColor: Colors.cyan,
-//                  color: Colors.teal,
-//                  borderSide: new BorderSide(color: Colors.teal),
-//                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0))),
-//            ),
-//          ),
-//          Padding(
-//            padding: const EdgeInsets.all(20),
-//            child: Container(
-//              height: 50,
-//              child: OutlineButton(
-//                  onPressed: () {
-//                    pickImage(false);
-//                  },
-//                  child: Stack(
-//                    children: <Widget>[
-//                      Align(
-//                          alignment: Alignment.centerLeft, child: Icon(Icons.image, size: 30, color: Colors.teal[800])),
-//                      Align(
-//                          alignment: Alignment.center,
-//                          child: Text(
-//                            "Carregar Foto",
-//                            style: TextStyle(fontSize: 30, color: Colors.teal[800]),
-//                            textAlign: TextAlign.center,
-//                          ))
-//                    ],
-//                  ),
-//                  highlightedBorderColor: Colors.cyan,
-//                  color: Colors.teal,
-//                  borderSide: new BorderSide(color: Colors.teal),
-//                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0))),
-//            ),
-//          ),
-//          Padding(
-//            padding: const EdgeInsets.all(20),
-//            child: Container(
-//              height: 50,
-//              child: OutlineButton(
-//                  onPressed: () {
-//                    Navigator.push(
-//                      context,
-//                      MaterialPageRoute(builder: (context) => BuscaMedicamento()),
-//                    );
-//                  },
-//                  child: Stack(
-//                    children: <Widget>[
-//                      Align(
-//                          alignment: Alignment.centerLeft, child: Icon(Icons.search, size: 30, color: Colors.teal[800])),
-//                      Align(
-//                          alignment: Alignment.center,
-//                          child: Text(
-//                            "Pesquisar",
-//                            style: TextStyle(fontSize: 30, color: Colors.teal[800]),
-//                            textAlign: TextAlign.center,
-//                          ))
-//                    ],
-//                  ),
-//                  highlightedBorderColor: Colors.cyan,
-//                  color: Colors.teal,
-//                  borderSide: new BorderSide(color: Colors.teal),
-//                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0))),
-//            ),
-//          )
-//        ],
-//      ),
     );
   }
 }

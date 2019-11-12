@@ -3,58 +3,74 @@
     {
       "id": 1,
       "nome": "Tolrest",
-      "principios_ativos": "Principios ativos do Tolrest",
-      "contra_indicacoes": "contra_indicacoes do Tolrest",
-      "tipo_medicamento": "Comprimidos de 50mg e 100mg",
-      "data": "data"
+      "principios_ativos": "Tolrest (cloridrato de sertralina) é indicado para uso adulto nos seguintes tratamentos: sintomas da depressão, incluindo depressão acompanhada por sintomas de ansiedade, em pacientes com ou sem história de mania; transtorno do pânico; transtorno do estresse pós-traumático; fobia social ou transtorno da ansiedade social; sintomas da síndrome da tensão pré-menstrual e/ou transtorno disfórico pré-menstrual. Tolrest (cloridrato de sertralina) é indicado para uso adulto e para crianças acima de 6 anos de idade no transtorno obsessivo-compulsivo.",
+      "contra_indicacoes": "Tolrest é contraindicado para pacientes com hipersensibilidade (alergia) ao cloridrato de sertralina ou aos demais componentes da fórmula e para pacientes em uso concomitante de antidepressivos inibidores da monoaminoxidase (IMAO), pimozida e dissulfiram.",
+      "tipo_medicamento": "Comprimidos de 25mg e 75mg",
+      "data": "30/10/2019",
+      "anvisa": true
     },
     {
       "id": 2,
       "nome": "Dorilen",
       "principios_ativos": "Dorilen é um medicamento que tem na sua composição dipirona, a adifenina e a prometazina, que apresentam uma ação analgésica e que reduz os espasmos e a febre.",
-      "contra_indicacoes": "contra_indicacoes do Dorilen",
-      "tipo_medicamento": "tipo_medicamento do Dorilen",
-      "data": "data 2"
+      "contra_indicacoes": "Dorilen está contraindicado para crianças com menos de 2 anos de idade, pacientes com doenças graves nos rins ou fígado, pacientes com problemas de coagulação sanguínea e para pacientes com alergia à Dipirona sódica, ao Cloridrato de adifenina, ao Cloridrato de prometazina ou a algum dos componentes da fórmula.",
+      "tipo_medicamento": "Solução Oral 500mg/1,5ml + 5mg/1,5ml + 10mg/1,5ml",
+      "data": "08/01/2019",
+      "anvisa": true
     },
     {
       "id": 3,
       "nome": "Valerimed",
-      "principios_ativos": "Principios ativos do Valerimed",
-      "contra_indicacoes": "contra_indicacoes do Valerimed",
-      "tipo_medicamento": "tipo_medicamento do Valerimed",
-      "data": "25/03/2019"
+      "principios_ativos": "Usado como sedativo moderado, como agente promotor do sono e no tratamento de distúrbios do sono associados à ansiedade.",
+      "contra_indicacoes": "Durante seu uso, não dirija veículos ou opere máquinas, pois sua agilidade e atenção podem ser prejudicadas.",
+      "tipo_medicamento": "Comprimidos 50mg",
+      "data": "Não aplicável",
+      "anvisa": false
     },
     {
       "id": 4,
       "nome": "Euthyrox 112 mcg",
-      "principios_ativos": "Principios ativos do Euthyrox",
-      "contra_indicacoes": "contra_indicacoes do Euthyrox",
-      "tipo_medicamento": "tipo_medicamento do Euthyrox",
-      "data": "data 4"
+      "principios_ativos": "Euthyrox é um medicamento que possui em sua fórmula uma substância chamada levotiroxina. A levotiroxina é um hormônio normalmente fabricado pelo organismo pela glândula tireoide. Euthyrox é prescrito pelo médico para suprir a deficiência desse hormônio no organismo.",
+      "contra_indicacoes": "Euthyrox não deve ser utilizado em caso de: hipersensibilidade (alergia) aos componentes da fórmula, infarto do miocárdio recente, tireotoxicose não tratada (síndrome clínica, não tratada, resultante de níveis elevados de hormônio da tireoide), insuficiência suprarrenal (da glândula localizada sobre os rins) descompensada e hipertireoidismo não tratado. Não há contraindicação relativa a faixas etárias.",
+      "tipo_medicamento": "Comprimidos 25, 50, 75, 88, 100, 112, 125, 150, 175 e 200 mcg ",
+      "data": "12/09/2019",
+      "anvisa": true
     },
     {
       "id": 5,
       "nome": "Voltaren",
-      "principios_ativos": "Voltaren é indicado para o tratamento da dor, da inflamação e da febre, dores associadas a diferentes tipos de reumatismo como dor reumática das articulações, síndrome do ombro congelado ou crises de gota, dor nas costas, entorses, cotovelo de tenista, distensões ou outras lesões, infecções do ouvido, nariz e garganta e no tratamento de inflamações dolorosas em ginecologia, como períodos menstruais, em adultos.",
-      "contra_indicacoes": "Hipersensibilidade conhecida à substância ativa ou a qualquer outro componente da formulação; Úlcera gástrica ou intestinal ativa, sangramento ou perfuração (vide “Advertências e precauções” e “Reações adversas”); No último trimestre de gravidez (vide “Gravidez e lactação”); Insuficiência hepática;",
-      "tipo_medicamento": "Comprimidos ou supositórios",
-      "data": "20/10/2019"
+      "principios_ativos": "A substância ativa do Voltaren é o diclofenaco sódico. Voltaren pertence a um grupo de medicamentos chamados anti-inflamatórios não esteroidais (AINEs), usados para tratar dor e inflamação. Voltaren alivia os sintomas da inflamação, tais como inchaço e dor, bloqueando a síntese de moléculas (prostaglandinas) responsáveis pela inflamação, dor e febre. Não tem nenhum efeito na causa da inflamação ou febre. Se você tem qualquer dúvida sobre como este medicamento funciona ou porque ele foi indicado a você, pergunte ao seu médico. Em condições inflamatórias pós-operatórias e pós-traumáticas, Voltaren alivia rapidamente tanto a dor espontânea quanto a relacionada ao movimento e diminui o inchaço inflamatório e o edema do ferimento.",
+      "contra_indicacoes": "Este medicamento é contraindicado para:-Hipersensibilidade conhecida à substância ativa ou a qualquer outro componente da formulação; Úlcera gástrica ou intestinal ativa, sangramento ou perfuração (vide “Advertências e precauções” e “Reações adversas”); No último trimestre de gravidez (vide “Gravidez e lactação”); Insuficiência hepática;",
+      "tipo_medicamento": "Comprimidos 50mg ou injecão de 75ng/3ml",
+      "data": "18/07/2019",
+      "anvisa": true
     },
     {
       "id": 6,
       "nome": "Elô",
-      "principios_ativos": "Principios ativos do Elô",
-      "contra_indicacoes": "contra_indicacoes do Elô",
-      "tipo_medicamento": "tipo_medicamento  do Elô",
-      "data": "data 2"
+      "principios_ativos": "Elô é um contraceptivo de baixa concentração hormonal, reduzindo sintomas da tensão pré-menstrual e efeitos colaterais, como inchaços, controle de espinha, oleosidade excessiva na pele e cabelos.",
+      "contra_indicacoes": "Contraindicado em casos de história atual ou anterior de coágulo em uma veia da perna (trombose), do pulmão (embolia pulmonar) ou outras partes do corpo; história  atual ou anterior de ataque cardíaco ou derrame cerebral, que é  causado por um coágulo (de sangue) ou por um rompimento de um vaso sanguíneo no cérebro; história atual ou anterior de doenças que podem indicar ataque cardíaco (como angina pectoris que causa uma intensa dor no peito, podendo se irradiar para o braço esquerdo) ou de um derrame (como um episódio isquêmico transitório ou um pequeno derrame sem efeitos residuais); na presença de um alto risco para a formação de coágulos arteriais ou venosos; história atual ou anterior de um certo tipo de enxaqueca acompanhada por sintomas neurológicos focais tais como sintomas visuais, dificuldade para falar, fraqueza ou adormecimento em qualquer parte do corpo; diabetes melitus com comprometimento de vasos sanguíneos; história atual ou anterior de doença do fígado (cujos sintomas podem ser amarelamento da pele ou coceira do corpo todo) e enquanto seu fígado ainda não voltou a funcionar normalmente; história  atual ou anterior de câncer que pode  se desenvolver sob a influência de hormônios sexuais; mau funcionamento dos rins (insuficiência renal grave ou insuficiência renal aguda); presença ou antecedente de tumor no fígado (benigno ou maligno); presença de sangramento vaginal sem explicação; ocorrência ou suspeita de gravidez; hipersensibilidade (alergia) à qualquer um dos componentes deste medicamento. ",
+      "tipo_medicamento": "Comprimidos",
+      "data": "21/06/2016",
+      "anvisa": true
     },
     {
       "id": 7,
       "nome": "Cimegripe",
       "principios_ativos": "Cimegripe é indicado no tratamento dos sintomas de gripes e resfriados. Cimegripe é destinado ao alívio da congestão nasal, coriza, febre, dor de cabeça e dores musculares presentes nos estados gripais.",
-      "contra_indicacoes": "contra_indicacoes do Cimegripe",
-      "tipo_medicamento": "tipo_medicamento  do Cimegripe",
-      "data": "data 2"
+      "contra_indicacoes": "Cimegripe é contraindicado para pacientes com hipersensibilidade aos componentes da fórmula, pressão alta, doença cardíaca, diabetes, glaucoma, hipertrofia da próstata, doença renal crônica, insuficiência hepática grave, disfunção tireoidiana, gravidez e lactação sem controle médico. Este medicamento é contraindicado para menores de 18 anos. Este medicamento não deve ser utilizado por mulheres grávidas sem orientação médica ou do cirurgião-dentista.",
+      "tipo_medicamento": "Comprimidos 400mg",
+      "data": "29/08/2019",
+      "anvisa": true
+    },
+    {
+      "id": 8,
+      "nome": "Nevralgex",
+      "principios_ativos": "Descricao",
+      "contra_indicacoes": "Descricao",
+      "tipo_medicamento": "Descricao",
+      "data": "Descricao",
+      "anvisa": true
     }
   ]
 }

@@ -4,7 +4,14 @@ import 'package:tcc_fabiano/models/medicamento.dart';
 class Utils {
   static List<String> limpaAcentos(List<String> resultados) {
     List<String> resultados_limpos = [];
-    for (String r in resultados) resultados_limpos.add(removeDiacritics(r));
+    for (String r in resultados) {
+      if(r.contains("°"))
+        resultados_limpos.add(r.replaceAll("°", ' '));
+      if(r.contains("\""))
+        resultados_limpos.add(r.replaceAll("\"", ' '));
+
+      resultados_limpos.add(removeDiacritics(r));
+    }
     return resultados_limpos;
   }
 

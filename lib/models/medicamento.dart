@@ -5,14 +5,10 @@ class Medicamento {
   String contraIndicacoes;
   String tipoMedicamento;
   String data;
+  bool anvisa;
 
   Medicamento(
-      {this.id,
-        this.nome,
-        this.principiosAtivos,
-        this.contraIndicacoes,
-        this.tipoMedicamento,
-        this.data});
+      {this.id, this.nome, this.principiosAtivos, this.contraIndicacoes, this.tipoMedicamento, this.data, this.anvisa});
 
   Medicamento.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -21,6 +17,7 @@ class Medicamento {
     contraIndicacoes = json['contra_indicacoes'];
     tipoMedicamento = json['tipo_medicamento'];
     data = json['data'];
+    anvisa = json['anvisa'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,6 +28,7 @@ class Medicamento {
     data['contra_indicacoes'] = this.contraIndicacoes;
     data['tipo_medicamento'] = this.tipoMedicamento;
     data['data'] = this.data;
+    data['anvisa'] = this.anvisa;
     return data;
   }
 }

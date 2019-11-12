@@ -21,7 +21,7 @@ class MostraMedicamento extends StatefulWidget {
 class _MostraMedicamentoState extends State<MostraMedicamento> {
   double fonte_media = 25;
   double fonte_grande = 35;
-  double fonte_pequena = 20;
+  double fonte_pequena = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -93,15 +93,24 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                 widget.medicamento.nome,
                 style: TextStyle(fontSize: fonte_grande),
               )),
+              widget.medicamento.anvisa != true
+                  ? Center(
+                      child: Text(
+                      "Medicamento não regulamentado pela Anvisa",
+                      style: TextStyle(fontSize: fonte_pequena, color: Colors.red),
+                      textAlign: TextAlign.center,
+                    ))
+                  : Container(),
               CardExpandedInfo.CardExpanded(
                   fonte_pequena: fonte_pequena,
                   nomeCampo: "Princípios ativos:",
                   dadoCampo: widget.medicamento.principiosAtivos,
-                  abertoInicial: false),
+                  abertoInicial: true),
               SizedBox(
                 height: 5,
               ),
               CardExpandedInfo.CardExpanded(
+                  fonte_pequena: fonte_pequena,
                   nomeCampo: "Tipo de medicamento:",
                   dadoCampo: widget.medicamento.tipoMedicamento,
                   abertoInicial: false),
@@ -109,6 +118,7 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
                 height: 5,
               ),
               CardExpandedInfo.CardExpanded(
+                  fonte_pequena: fonte_pequena,
                   nomeCampo: "Contra-Indicações:",
                   dadoCampo: widget.medicamento.contraIndicacoes,
                   abertoInicial: false),
@@ -117,8 +127,11 @@ class _MostraMedicamentoState extends State<MostraMedicamento> {
               ),
               Text(
                 "Última atualização: \n${widget.medicamento.data}",
-                textAlign: TextAlign.right,
-                style: TextStyle(color: Colors.grey, fontSize: 10),
+                textAlign: TextAlign.left,
+                style: TextStyle(color: Colors.grey, fontSize: fonte_pequena),
+              ),
+              SizedBox(
+                height: 100,
               ),
             ],
           ),
